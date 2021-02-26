@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Réponse à une réclamation  </ion-title>
+  </ion-toolbar>
+</ion-header> 
+
+<ion-content>
+
+  <ion-item lines="full">
+    <ion-label   style="font-size: 16px;font-weight: 600;" color='danger'>Les champs sont obligatoires(*)</ion-label>
+    
+  </ion-item>
+
+  <ion-list style="margin:1px 25px 25px 25px">
+    <h4 *ngIf="images.length == 0" text-center>Aucune image!</h4>
+    <ion-item *ngFor="let img of images; index as pos" text-wrap>
+      <ion-thumbnail slot="start">
+        <ion-img [src]="img.path"></ion-img>
+      </ion-thumbnail>
+      <ion-label>
+        {{ img.name }}
+      </ion-label>
+     
+      <ion-button slot="end" fill="clear" (click)="deleteImage(img, pos)">
+        <ion-icon slot="icon-only" name="trash"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+ 
+<ion-footer>
+  <ion-toolbar color="primary">
+    <ion-button fill="clear" expand="full" color="light" (click)="selectImage()">
+      <ion-icon slot="start" name="camera"></ion-icon>
+      ajouter une  image</ion-button>
+  </ion-toolbar>
+  <span class="error ion-padding" *ngIf="isSubmitted && imgvalid">
+    Champs Obligatoire.
+  </span>
+</ion-footer>
+
+
+
+
+
+  
+<ion-row >
+<ion-col>
+  <ion-button (click)="Postdata()" class="marginbuttom"  color="primary" expand="block">Ajouter</ion-button>
+  <ion-button   class="marginbuttom"  color="success" expand="block"  [routerLink]="['/tabs/home']" >annuler</ion-button>
+ 
+ 
+</ion-col>
+</ion-row>
+
+</ion-content>

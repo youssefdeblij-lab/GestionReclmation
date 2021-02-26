@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <img src="../../../assets/logo.jpg">
+  </ion-toolbar>
+</ion-header>
+
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Liste des réclamations</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-item-divider *ngIf="isnotready">
+  <ion-label>
+   chargement ...
+  </ion-label>
+</ion-item-divider>
+
+
+<ion-content>
+
+  
+<ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" >
+  <ion-refresher-content
+  pullingIcon="chevron-down-circle-outline"
+    pullingText="Pull to refresh"
+    refreshingSpinner="circles"
+ 
+  ></ion-refresher-content>
+</ion-refresher>
+
+  <ion-card *ngFor="let rec of Reclamations" >
+    <ion-item [routerLink]="['/single-show/' + rec.id]" lines="full"> 
+
+      <ion-icon name="warning-outline"  *ngIf="!rec.isresolus" color="warning"  ></ion-icon>
+      <ion-icon name="checkmark-outline" *ngIf="rec.isresolus"  color="success"  ></ion-icon>
+      
+      <ion-label style="font-weight : 600 ;">&nbsp;&nbsp;Sur :  {{rec.zonetxt}} </ion-label>
+
+     
+   
+    </ion-item>
+    <ion-item [routerLink]="['/single-show/' + rec.id ]" lines="full">
+      <ion-badge   >&nbsp;&nbsp; Ajoutée le : {{rec.date}}</ion-badge>&nbsp;&nbsp;
+      <ion-badge color="light" style="float: right ;" >Par : {{rec.ajoutepartxt}}</ion-badge>
+    </ion-item>
+
+    <ion-item [routerLink]="['/single-show/' + rec.id ]" lines="full">
+      {{rec.commentaire}}
+    </ion-item>
+
+ 
+
+    <ion-item *ngIf="rec.isresolus" lines="none" [routerLink]="['/single-show/' + rec.id ]">
+      <ion-badge color="success" *ngIf="rec.isresolus"  >
+        Traitée Par : {{rec.resolupartxt}}</ion-badge>
+    </ion-item>
+
+ 
+  </ion-card>
+
+  
+
+</ion-content>

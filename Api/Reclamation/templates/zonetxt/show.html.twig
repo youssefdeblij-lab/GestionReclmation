@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Zonetxt{% endblock %}
+
+{% block body %}
+    <h1>Zonetxt</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ zonetxt.id }}</td>
+            </tr>
+            <tr>
+                <th>Zonetxt</th>
+                <td>{{ zonetxt.zonetxt }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('zonetxt_index') }}">back to list</a>
+
+    <a href="{{ path('zonetxt_edit', {'id': zonetxt.id}) }}">edit</a>
+
+    {{ include('zonetxt/_delete_form.html.twig') }}
+{% endblock %}

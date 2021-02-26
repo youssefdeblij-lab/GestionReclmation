@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Utilaisateurs index{% endblock %}
+
+{% block body %}
+    <h1>Utilaisateurs index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Role</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for utilaisateur in utilaisateurs %}
+            <tr>
+                <td>{{ utilaisateur.id }}</td>
+                <td>{{ utilaisateur.nom }}</td>
+                <td>{{ utilaisateur.email }}</td>
+                <td>{{ utilaisateur.username }}</td>
+                <td>{{ utilaisateur.password }}</td>
+                <td>{{ utilaisateur.role }}</td>
+                <td>
+                    <a href="{{ path('utilaisateurs_show', {'id': utilaisateur.id}) }}">show</a>
+                    <a href="{{ path('utilaisateurs_edit', {'id': utilaisateur.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('utilaisateurs_new') }}">Create new</a>
+{% endblock %}

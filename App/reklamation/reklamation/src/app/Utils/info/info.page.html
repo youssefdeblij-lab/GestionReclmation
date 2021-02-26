@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <img src="../../../assets/logo.jpg">
+  </ion-toolbar>
+</ion-header>
+
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-title>Informations </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item lines="full" > 
+    <ion-label>
+     <p>Nom Complet   </p>{{nom}}
+    </ion-label>
+  </ion-item >
+
+  <ion-item lines="full" > 
+    <ion-label>
+     <p>Email  </p>{{email}}
+    </ion-label>
+  </ion-item >
+
+  <ion-item lines="full" > 
+    <ion-label>
+     <p>Role  </p>{{role}}
+    </ion-label>
+  </ion-item >
+
+
+  <ion-item lines="full" > 
+    <ion-label>
+     <p>Nom d'utilisateur </p>{{user}}
+    </ion-label>
+  </ion-item >
+
+  <ion-item lines="full" > 
+    <ion-label>
+     <p>Mot de passe </p>**********
+    </ion-label>
+  </ion-item >
+
+
+
+   
+
+  <ion-item lines="none"  > 
+   <!--<ion-button color="success"  [routerLink]="['/edit']">
+      <ion-icon name="create-outline"></ion-icon>
+      <ion-label>Modifier les informations</ion-label>
+    </ion-button>--> 
+    <ion-button  (click)="presentAlertConfirm()">
+      <ion-icon name="log-out-outline"></ion-icon>
+      <ion-label>Déconnexion</ion-label>
+    </ion-button>
+  </ion-item >
+
+
+</ion-content>

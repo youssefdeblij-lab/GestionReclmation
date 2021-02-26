@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Zonetxt index{% endblock %}
+
+{% block body %}
+    <h1>Zonetxt index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Zonetxt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for zonetxt in zonetxts %}
+            <tr>
+                <td>{{ zonetxt.id }}</td>
+                <td>{{ zonetxt.zonetxt }}</td>
+                <td>
+                    <a href="{{ path('zonetxt_show', {'id': zonetxt.id}) }}">show</a>
+                    <a href="{{ path('zonetxt_edit', {'id': zonetxt.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('zonetxt_new') }}">Create new</a>
+{% endblock %}

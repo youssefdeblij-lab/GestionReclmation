@@ -1,0 +1,46 @@
+
+<ion-content>
+  <ion-grid class="ion-padding" style="margin-top: 22px;">
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="6"> 
+        
+          <img src="../../../assets/logoHome.jpg" style="border-radius: 22px !important;">
+       
+      </ion-col>
+     
+    </ion-row>
+  
+    
+  </ion-grid>
+<form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate style="margin:222px 25px 25px 25px">
+
+  <ion-item lines="full">
+    <ion-label  style="font-weight: 500; font-family: Varela Round;">Nom d'utilisateur</ion-label>
+    <ion-input formControlName="name" type="text"></ion-input>
+  </ion-item>
+  <span class="error ion-padding" *ngIf="isSubmitted && errorControl.name.errors?.required">
+    Nom d'utilisateur obligatoire.
+  </span>
+   <br>
+
+  <ion-item lines="full">
+    <ion-label style="font-weight: 500; font-family: Varela Round;" >Mot de passe</ion-label>
+    <ion-input formControlName="password" type="password"></ion-input>
+  </ion-item>
+  <span class="error ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.required">
+    Le mot de passe est obligatoire.
+  </span>
+  <span class="error ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.minlength">
+    Password should be min 6 chars long.
+  </span>
+
+
+ 
+    <span>
+      <ion-button type="submit" class="marginbuttom"  color="danger" expand="block" style="font-weight: 500; font-family: Varela Round;">Se Connecter</ion-button>
+     
+     
+    </span>
+  
+</form>
+</ion-content>

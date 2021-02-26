@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Details réclamation</ion-title>
+    <ion-buttons slot="start">
+       <ion-back-button   [text]="retour" ></ion-back-button>
+    </ion-buttons>
+</ion-toolbar>
+</ion-header>
+
+<ion-item-divider color="primary" *ngIf="isnotready">
+  <ion-label>
+   chargement ...
+  </ion-label>
+</ion-item-divider>
+
+
+
+
+<ion-content  *ngIf="!isnotready">
+
+  <ion-item-divider color="warning" *ngIf="Reclamations.status == 0" >
+    <ion-label>
+      Statut : réclamation non traitée
+    </ion-label>
+  </ion-item-divider>
+
+  <ion-item-divider color="success" *ngIf="Reclamations.status != 0" >
+    <ion-label>
+      Statut : réclamation traitée
+    </ion-label>
+  </ion-item-divider>
+
+  <ion-item lines="full">
+    <ion-label style="font-weight : 600 ;">Zone : {{Zone.zonetxt}}</ion-label>
+  </ion-item>
+  <ion-item lines="full">
+    
+    <ion-slides   >
+     
+      <ion-slide *ngFor="let img of imgs_intervention"  > <img   src="{{racing}}{{img.lien}}"  /> </ion-slide>
+     
+    
+    </ion-slides>
+
+
+  </ion-item>
+  <ion-item> Date : {{ Reclamations.date}}</ion-item>
+  <ion-item> Ajouté par  :  {{ par }} </ion-item>
+   
+  <ion-item  *ngIf="Reclamations.status != 0" > Traité par  : {{ resolu}}</ion-item>
+  <ion-item *ngIf="Reclamations.status != 0"  > Date d'intervenion   :  {{ Reclamations.dateresoulution }}</ion-item>
+  <ion-item>  {{Reclamations.commentaire}} </ion-item>
+  <ion-item lines="none"  *ngIf="Reclamations.status != 0">  <ion-label  >Images aprés l'intervention :</ion-label> </ion-item>
+  <ion-item lines="full"  *ngIf="Reclamations.status != 0">
+   
+    <ion-slides   >
+     
+      <ion-slide *ngFor="let imgs_reso of imgs_resolution"  > <img   src="{{racing}}{{imgs_reso.lien}}"  /> </ion-slide>
+     
+    
+    </ion-slides>
+
+  </ion-item>
+  <ion-row *ngIf="canRsdr && Reclamations.status == 0">
+    <ion-col>
+      <ion-button  class="marginbuttom"  color="success" expand="block" [routerLink]="['/resoulution/' + Reclamations.id ]" >Marquer comme Traitée</ion-button>
+      
+    </ion-col>
+  </ion-row>
+
+  <ion-row *ngIf="isme">
+    <ion-col>
+      <ion-button   class="marginbuttom"  color="danger" expand="block" (click)="presentAlertConfirm()">Supprimer</ion-button>
+      
+    </ion-col>
+  </ion-row>
+
+
+</ion-content>

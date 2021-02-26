@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Zonetxt{% endblock %}
+
+{% block body %}
+    <h1>Edit Zonetxt</h1>
+
+    {{ include('zonetxt/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('zonetxt_index') }}">back to list</a>
+
+    {{ include('zonetxt/_delete_form.html.twig') }}
+{% endblock %}

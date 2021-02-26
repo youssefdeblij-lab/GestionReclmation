@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reclamations{% endblock %}
+
+{% block body %}
+    <h1>Reclamations</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ reclamation.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ reclamation.date }}</td>
+            </tr>
+            <tr>
+                <th>Ajoutepar</th>
+                <td>{{ reclamation.ajoutepar }}</td>
+            </tr>
+            <tr>
+                <th>Resolupar</th>
+                <td>{{ reclamation.resolupar }}</td>
+            </tr>
+            <tr>
+                <th>Commentaire</th>
+                <td>{{ reclamation.commentaire }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ reclamation.status }}</td>
+            </tr>
+            <tr>
+                <th>Idzone</th>
+                <td>{{ reclamation.idzone }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('reclamations_index') }}">back to list</a>
+
+    <a href="{{ path('reclamations_edit', {'id': reclamation.id}) }}">edit</a>
+
+    {{ include('reclamations/_delete_form.html.twig') }}
+{% endblock %}
